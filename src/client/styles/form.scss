@@ -1,0 +1,21 @@
+.Hello {
+    color: blue;
+}
+
+.information{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#submit {
+    margin: 20px;
+}
+
+.trip{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid red;
+}

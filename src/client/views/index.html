@@ -1,15 +1,45 @@
 <!doctype html>
 <html>
     <head>
-        <title>Hello World!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Travel App</title>
     </head>
     <body>
-        <h1 class="Hello">Travel App</h1>
-        <form>
-            <input type="text" placeholder="City"></input>
-            <input type="date"></input>
-            <input type="date"></input>
-            <button>Submit</button>
-        </form>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Your Trip!</h2>
+                </div>
+                <div class="modal-body">
+                    <span id="modal-country"></span>
+                    <span id="modal-temp"></span>
+                    <span id="modal-weather"></span>
+                    <span id="modal-start"></span>
+                    <span id="modal-end"></span>
+                    <span id="modal-duration"></span>
+                    <span id="modal-days"></span>
+                </div>
+                <button id="save-trip">Save Trip</button>
+                <button id="remove-trip">Remove Trip</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="information">
+            <h1 class="Hello">Travel App</h1>
+            <form>
+                <input type="text" placeholder="City" id="city"></input>
+                <input type="date" id="startDate"></input>
+                <input type="date" id="endDate"></input>
+            </form>
+            <button id="submit">Submit</button>
+        </div>
+
+        <div id="trips">
+        </div>
+
     </body>
 </html>
