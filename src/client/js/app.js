@@ -73,13 +73,13 @@ const pixabay_base_url = 'https://pixabay.com/api/?key=';
 const pixabay_api_key = '16141332-cbc1b2ba7fcb73bf41c9a275f';
 
 const getImageURL = async(city, country) => {
-    let pixabay_endpoint = `${pixabay_base_url}${pixabay_api_key}&q=${city}&orientation=vertical`;
+    let pixabay_endpoint = `${pixabay_base_url}${pixabay_api_key}&q=${city}&orientation=vertical&image_type=photo`;
     try{
         let res = await fetch(pixabay_endpoint);
         let images = await res.json();
         return images.hits[0].largeImageURL;
     }catch(error){
-        pixabay_endpoint = `${pixabay_base_url}${pixabay_api_key}&q=${country}&orientation=vertical`;
+        pixabay_endpoint = `${pixabay_base_url}${pixabay_api_key}&q=${country}&orientation=vertical&image_type=photo`;
         try{
             let res = await fetch(pixabay_endpoint);
             let images = await res.json();
