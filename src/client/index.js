@@ -12,6 +12,7 @@ const trip = {};
 
 const search = async() => {
 
+    /* validate input location & dates */
     if(!validateForm()){
         return;
     }
@@ -19,14 +20,19 @@ const search = async() => {
     /* geonames API response */
     const info = await getLocation();
     console.log(info);
-    /* TODO: handle (info===undefined) */
+
+    /* handle: input location doesn't exsist */
+    if(info === undefined){
+        return;
+    }
+
     trip.latitude = info.latitude;
     trip.longitude = info.longitude;
     trip.country = info.country;
     trip.city = info.city;
 
     /* weatherbit API response */
-    const daysLeft = getRemainingDays();
+    const daysLeft = Math.trunc(getRemainingDays());
     console.log(daysLeft);
     let weather;
     if(daysLeft < 7){

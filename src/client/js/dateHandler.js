@@ -3,7 +3,7 @@ const getRemainingDays = () => {
     const currentDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     const startDate = document.getElementById('startDate').value;
     let days = (Date.parse(startDate)-Date.parse(currentDate))/86400000;
-    return Math.trunc(days);
+    return days;
 };
 
 const getTripLength = () => {

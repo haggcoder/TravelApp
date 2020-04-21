@@ -5,16 +5,23 @@ const getLocation = async() => {
     let search_key = document.getElementById('city').value;
     let geonames_endpoint = `${geonames_base_url}${search_key}&maxRows=1&username=${geonames_username}`;
     try {
-        const res = await fetch(geonames_endpoint);
-        /* TODO: handle (res===undefined) */
-        const data = await res.json();
-        const d = data.geonames[0];
 
         /* city name handler */
         let city_name = document.getElementById('city').value;
         city_name = city_name.toLowerCase();
         city_name = city_name[0].toUpperCase() + city_name.slice(1);
 
+        const res = await fetch(geonames_endpoint);
+        /* TODO: handle (res===undefined) */
+        const data = await res.json();
+
+        /* empty response from geonames API */
+        if(data.geonames.length <= 0){
+            alert(`Error: ${city_name} is not a valid location!`);
+            return;
+        }
+
+        const d = data.geonames[0];
         let info = {
             latitude: d.lat,
             longitude: d.lng,
