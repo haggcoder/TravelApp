@@ -9,7 +9,7 @@ const validateDate = () => {
 
 const validateForm = () => {
     if(document.getElementById('city').value === ""){
-        alert('Error: City field can\'t be empty!');
+        alert('Error: Location field can\'t be empty!');
         return false;
     }
     if(!validateDate()){

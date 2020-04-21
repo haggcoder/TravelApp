@@ -12,7 +12,6 @@ const getLocation = async() => {
         city_name = city_name[0].toUpperCase() + city_name.slice(1);
 
         const res = await fetch(geonames_endpoint);
-        /* TODO: handle (res===undefined) */
         const data = await res.json();
 
         /* empty response from geonames API */
