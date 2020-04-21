@@ -1,21 +1,55 @@
-.Hello {
-    color: blue;
+$fontSize: 20px;
+
+*{
+    font-family: 'Bad Script';
+}
+
+.heading {
+    text-align: center;
+    font-size: 50px;
 }
 
 .information{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(230, 227, 227);
+    padding: 40px;
+    border-bottom: 4px solid black;
+    border-top: 4px solid black;
+    margin-bottom: 10px;
+    
+    & form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: $fontSize;
+    }
+
+    & input {
+        background-color: white;
+        box-shadow: none;
+        border: 3px solid black;
+        border-radius: 10px;
+        width: 200px;
+        padding: 5px;
+        margin-top: 5px;
+        font-size: $fontSize;
+    }
 }
 
-#submit {
-    margin: 20px;
+#submit, #save-trip, #remove-trip {
+    font-size: 25px;
+    margin-top: 20px;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 50%;
 }
 
-.trip{
+#trips{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    border: 1px solid red;
+    align-items: center; 
 }

@@ -1,14 +1,17 @@
-const instantiateModal = (data) => {
+const instantiateModal = (trip) => {
+
+    const start_date = document.getElementById('startDate').value;
+    const end_date = document.getElementById('endDate').value;
 
     /* set modal data */
-    document.getElementById('modal-country').innerText = data.country;
-    document.getElementById('modal-temp').innerText = data.temprature;
-    document.getElementById('modal-weather').innerText = data.weather;
-    document.getElementById('modal-duration').innerText = data.duration;
-    document.getElementById('modal-days').innerText = data.daysLeft;
-    document.getElementById('modal-start').innerText = document.getElementById('startDate').value;
-    document.getElementById('modal-end').innerText = document.getElementById('endDate').value;
-
+    document.getElementById('modal-image').setAttribute("src",`${trip.image}`);
+    document.getElementById('modal-country').innerText = `My trip to: ${trip.city}, ${trip.country}`;
+    document.getElementById('modal-start').innerText = `Departing: ${start_date}`;
+    document.getElementById('modal-end').innerText = `Returning: ${end_date}`;
+    document.getElementById('modal-days').innerText = `${trip.city}, ${trip.country} is ${trip.daysLeft} days away!`;
+    document.getElementById('modal-temp').innerText = `Typical Weather for then is: ${trip.temprature}°C`;
+    document.getElementById('modal-weather').innerText = `${trip.weather}`;
+    
     document.getElementById('modal').style.display = 'block';
 };
 

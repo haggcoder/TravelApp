@@ -1,10 +1,12 @@
-import { getLocation, getCurrentWeather, getWeatherForecast } from './js/app'
+import { getLocation, getCurrentWeather, getWeatherForecast, getImageURL } from './js/app'
 import { getRemainingDays, getTripLength } from './js/dateHandler'
 import { instantiateModal, closeModal } from './js/modalHandler'
 import { addTrip } from './js/tripHandler'
 
 import './styles/form.scss'
-import './styles/modal.scss'
+// import './styles/modal.scss'
+import './styles/tripCard.scss'
+import './styles/modalCard.scss'
 
 const trip = {};
 
@@ -17,6 +19,7 @@ const search = async() => {
     trip.latitude = info.latitude;
     trip.longitude = info.longitude;
     trip.country = info.country;
+    trip.city = info.city;
 
     /* weatherbit API response */
     const daysLeft = getRemainingDays();
@@ -31,6 +34,9 @@ const search = async() => {
     trip.daysLeft = daysLeft;
     trip.temprature = weather.temprature;
     trip.weather = weather.description;
+
+    /* pixabay API response */
+    trip.image = await getImageURL(trip.city, trip.country);
 
     /* instantiate trip modal */
     console.log(trip);

@@ -9,10 +9,17 @@ const getLocation = async() => {
         /* TODO: handle (res===undefined) */
         const data = await res.json();
         const d = data.geonames[0];
+
+        /* city name handler */
+        let city_name = document.getElementById('city').value;
+        city_name = city_name.toLowerCase();
+        city_name = city_name[0].toUpperCase() + city_name.slice(1);
+
         let info = {
             latitude: d.lat,
             longitude: d.lng,
-            country: d.countryName
+            country: d.countryName,
+            city: city_name
         }
         return info;
     }catch(error){
@@ -62,4 +69,26 @@ const getWeatherForecast = async(lat, lng, day) => {
     }
 }
 
-export { getLocation, getCurrentWeather, getWeatherForecast };
+const pixabay_base_url = 'https://pixabay.com/api/?key=';
+const pixabay_api_key = '16141332-cbc1b2ba7fcb73bf41c9a275f';
+
+const getImageURL = async(city, country) => {
+    let pixabay_endpoint = `${pixabay_base_url}${pixabay_api_key}&q=${city}&orientation=vertical`;
+    try{
+        let res = await fetch(pixabay_endpoint);
+        let images = await res.json();
+        return images.hits[0].largeImageURL;
+    }catch(error){
+        pixabay_endpoint = `${pixabay_base_url}${pixabay_api_key}&q=${country}&orientation=vertical`;
+        try{
+            let res = await fetch(pixabay_endpoint);
+            let images = await res.json();
+            return images.hits[0].largeImageURL;
+        }catch(error){
+            console.log('error!',error);
+        }
+        console.log('error!',error);
+    }
+}
+
+export { getLocation, getCurrentWeather, getWeatherForecast, getImageURL };
