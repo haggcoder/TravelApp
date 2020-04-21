@@ -4,7 +4,6 @@ import { instantiateModal, closeModal } from './js/modalHandler'
 import { addTrip } from './js/tripHandler'
 
 import './styles/form.scss'
-// import './styles/modal.scss'
 import './styles/tripCard.scss'
 import './styles/modalCard.scss'
 
