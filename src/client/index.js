@@ -2,6 +2,7 @@ import { getLocation, getCurrentWeather, getWeatherForecast, getImageURL } from 
 import { getRemainingDays, getTripLength } from './js/dateHandler'
 import { instantiateModal, closeModal } from './js/modalHandler'
 import { addTrip } from './js/tripHandler'
+import { validateForm } from './js/formValidator'
 
 import './styles/form.scss'
 import './styles/tripCard.scss'
@@ -10,6 +11,10 @@ import './styles/modalCard.scss'
 const trip = {};
 
 const search = async() => {
+
+    if(!validateForm()){
+        return;
+    }
 
     /* geonames API response */
     const info = await getLocation();
@@ -68,3 +73,5 @@ document.getElementById('submit').addEventListener('click',search);
 document.getElementById('save-trip').addEventListener('click',saveTrip);
 document.getElementById('remove-trip').addEventListener('click',closeModal);
 window.addEventListener('click', closeModal);
+
+export { getRemainingDays, getTripLength }
