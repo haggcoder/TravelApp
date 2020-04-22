@@ -48,6 +48,11 @@ $fontSize: 20px;
     width: 50%;
 }
 
+#submit:hover, #save-trip:hover, #remove-trip:hover {
+    background-color: black;
+    color: white;
+}
+
 #trips{
     display: flex;
     flex-direction: column;
